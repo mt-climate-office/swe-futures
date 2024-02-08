@@ -14,24 +14,10 @@ list.files("R", full.names = TRUE) %>%
 #   sf::st_as_sf(coords = c("longitude", "latitude"), crs = 4326) %>%
 #   mapview::mapview()
 
-snotelr::snotel_download(901, 
+snotel_data <-
+  snotelr::snotel_download(901, 
                          internal = TRUE) %>%
-  calc_future_swe() %>%
-  plot_snotel()
+  calc_future_swe()
 
-snotelr::snotel_download(616, 
-                         internal = TRUE) %>%
-  calc_future_swe() %>%
-  plot_snotel()
-
-snotelr::snotel_download(563, 
-                         internal = TRUE) %>%
-  calc_future_swe() %>%
-  plot_snotel()
-
-snotelr::snotel_download(693, 
-                         internal = TRUE) %>%
-  calc_future_swe() %>%
-  plot_snotel()
-
-
+  plot_snotel(snotel_data)
+  plot_snotel(snotel_data, usdm = TRUE)
