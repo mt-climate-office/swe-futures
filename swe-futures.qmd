@@ -1,0 +1,29 @@
+---
+title: "SWE Futures from Historical Data:<br>A Straightforward Approach"
+author: "R. Kyle Bocinsky"
+format: 
+  html: 
+    output-file: "index"
+    output-ext:  "html"
+    code-fold: true
+    code-summary: "Show the code"
+    code-tools: true
+    embed-resources: true
+    fig-align: "center"
+    fig-width: 8
+    fig-height: 4
+    self-contained: true
+    toc: true
+    toc-location: left
+    toc-depth: 4
+    toc-title: "SWE Futures"
+    copyright: "R. Kyle Bocinsky, Montana Climate Office"
+    license: "CC BY-NC"
+    pagetitle: "SWE Futures from Historical Data"
+bibliography: references.bib
+editor_options: 
+  chunk_output_type: console
+---
+
+It is common practice in snow and water supply monitoring to display current Snow Water Equivalent (SWE) levels for stations and watersheds in reference to historical values. SWE is a measure of the amount of water contained in the snowpack. Often expressed in millimeters of water, documenting accumulated SWE is important for understanding how much water is contained in high elevation snowpack, both as a reservoir for the spring and summer
+
