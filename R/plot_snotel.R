@@ -9,7 +9,7 @@ plot_snotel <-
           `D2` = c("5%", "10%"),
           `D1` = c("10%", "20%"),
           `D0` = c("20%", "30%"),
-          Neutral = c("30%", "70%"),
+          # Neutral = c("30%", "70%"),
           `W0` = c("70%", "80%"),
           `W1` = c("80%", "90%"),
           `W2` = c("90%", "95%"),
@@ -32,7 +32,7 @@ plot_snotel <-
                                           "D2",
                                           "D1",
                                           "D0",
-                                          "Neutral",
+                                          # "Neutral",
                                           "W0",
                                           "W1",
                                           "W2",
@@ -49,13 +49,15 @@ plot_snotel <-
           `D2` = "#FFAA00",
           `D1` = "#FCD37F",
           `D0` = "#FFFF00",
-          Neutral = "white",
+          # Neutral = "white",
           `W0` = "#9DFF44",
           `W1` = "#22FFFF",
           `W2` = "#1197FE",
           `W3` = "#1100FF",
           `W4` = "#0A0099"
         )
+      
+      ribbon_columns <- 2
     }else{
       ribbons <-
         list(`Min–5th` = c("Minimum", "5%"),
@@ -92,6 +94,8 @@ plot_snotel <-
           `75th–95th` = "cyan",
           `95th–Max` = "#0A0099"
         )
+      
+      ribbon_columns <- 1
     }
     
     
@@ -113,9 +117,14 @@ plot_snotel <-
                   tidyr::pivot_longer(-date),
                 mapping = aes(x = date, y = value, 
                               color = name)) +
-      scale_fill_manual(name = paste0('Past Conditions'), 
+      scale_fill_manual(name = paste0('Past Conditions\n', 
+                                      x$past_years[[1]],"–",
+                                      x$past_years[[2]]), 
                         values = ribbon_colors,
-                        guide = guide_legend(order = 1)) +
+                        guide = guide_legend(
+                          order = 1, 
+                          ncol = ribbon_columns
+                        )) +
       scale_color_manual(name = NULL,
                          values = c(
                            'Minimum' = first(ribbon_colors),
@@ -138,7 +147,7 @@ plot_snotel <-
                               linewidth = "Observed"),
                 color = "black",
                 lineend = "round") +
-      scale_linewidth_manual(name = "Present Conditions",
+      scale_linewidth_manual(name = paste0("Present Conditions"),
                              values = 1.5,
                              guide = guide_legend(order = 3)) +
       

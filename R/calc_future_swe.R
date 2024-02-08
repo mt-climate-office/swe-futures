@@ -12,7 +12,7 @@ calc_future_swe <-
     
     latest_date <-
       max(x$date)
-    
+
     latest_swe <-
       x$snow_water_equivalent[x$date == latest_date]
     
@@ -21,6 +21,11 @@ calc_future_swe <-
              lubridate::year(latest_date) + 1, 
              lubridate::year(latest_date))
     
+    past_years <-
+      min(x$date) %>%
+      lubridate::year() %>%
+      c(current_snow_year - 1)
+      
     past <-
       x %>%
       tibble::as_tibble() %>%
@@ -89,6 +94,8 @@ calc_future_swe <-
     return(
       dplyr::lst(
         station,
+        latest_date,
+        past_years,
         past,
         present,
         future

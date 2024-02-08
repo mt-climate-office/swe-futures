@@ -16,8 +16,19 @@ list.files("R", full.names = TRUE) %>%
 
 snotel_data <-
   snotelr::snotel_download(901, 
-                         internal = TRUE) %>%
+                           internal = TRUE) %>%
   calc_future_swe()
 
-  plot_snotel(snotel_data)
-  plot_snotel(snotel_data, usdm = TRUE)
+plot_snotel(snotel_data)
+
+ggsave("901.png",
+       width = 8,
+       height = 5,
+       units = "in")
+
+plot_snotel(snotel_data, usdm = TRUE)
+
+ggsave("901_usdm.png",
+       width = 8,
+       height = 5,
+       units = "in")
