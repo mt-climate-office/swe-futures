@@ -9,7 +9,7 @@ plot_snotel <-
           `D2` = c("5%", "10%"),
           `D1` = c("10%", "20%"),
           `D0` = c("20%", "30%"),
-          # Neutral = c("30%", "70%"),
+          Neutral = c("30%", "70%"),
           `W0` = c("70%", "80%"),
           `W1` = c("80%", "90%"),
           `W2` = c("90%", "95%"),
@@ -32,7 +32,7 @@ plot_snotel <-
                                           "D2",
                                           "D1",
                                           "D0",
-                                          # "Neutral",
+                                          "Neutral",
                                           "W0",
                                           "W1",
                                           "W2",
@@ -49,7 +49,7 @@ plot_snotel <-
           `D2` = "#FFAA00",
           `D1` = "#FCD37F",
           `D0` = "#FFFF00",
-          # Neutral = "white",
+          Neutral = "white",
           `W0` = "#9DFF44",
           `W1` = "#22FFFF",
           `W2` = "#1197FE",
@@ -58,6 +58,19 @@ plot_snotel <-
         )
       
       ribbon_columns <- 2
+      
+      ribbon_limits <-
+        c("D4",
+          "D3",
+          "D2",
+          "D1",
+          "D0",
+          # "Neutral",
+          "W0",
+          "W1",
+          "W2",
+          "W3",
+          "W4")
     }else{
       ribbons <-
         list(`Min–5th` = c("Minimum", "5%"),
@@ -96,6 +109,13 @@ plot_snotel <-
         )
       
       ribbon_columns <- 1
+      
+      ribbon_limits <-
+        c("Min–5th",
+          "5th–25th",
+          "25th–75th",
+          "75th–95th",
+          "95th–Max")
     }
     
     
@@ -121,6 +141,8 @@ plot_snotel <-
                                       x$past_years[[1]],"–",
                                       x$past_years[[2]]), 
                         values = ribbon_colors,
+                        limits = ribbon_limits,
+                        na.value = "#FFFFFF80",
                         guide = guide_legend(
                           order = 1, 
                           ncol = ribbon_columns
