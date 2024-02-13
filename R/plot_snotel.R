@@ -137,11 +137,11 @@ plot_snotel <-
                   tidyr::pivot_longer(-date),
                 mapping = aes(x = date, y = value, 
                               color = name)) +
-      scale_fill_manual(name = paste0('Past Conditions\n', 
+      scale_fill_manual(name = paste0('Past\nConditions\n', 
                                       x$past_years[[1]],"–",
                                       x$past_years[[2]]), 
-                        values = ribbon_colors,
-                        limits = ribbon_limits,
+                        values = rev(ribbon_colors),
+                        limits = rev(ribbon_limits),
                         na.value = "#FFFFFF80",
                         guide = guide_legend(
                           order = 1, 
@@ -156,7 +156,7 @@ plot_snotel <-
       scale_y_continuous(limits = c(0, NA),
                          expand = expansion(c(0,0.05),0),
                          name = "Snow Water Equivalent (mm)") +
-      scale_x_date(date_labels = "%B %Y",
+      scale_x_date(date_labels = "%b %Y",
                    expand = expansion(0,0),
                    name = NULL) +
       
@@ -169,7 +169,7 @@ plot_snotel <-
                               linewidth = "Observed"),
                 color = "black",
                 lineend = "round") +
-      scale_linewidth_manual(name = paste0("Present Conditions"),
+      scale_linewidth_manual(name = paste0("Present\nConditions"),
                              values = 1.5,
                              guide = guide_legend(order = 3)) +
       
@@ -188,7 +188,7 @@ plot_snotel <-
                               color = "Most Likely",
                               linetype = "Most Likely")) +
       
-      scale_fill_manual(name = "Future Conditions",
+      scale_fill_manual(name = "Future\nConditions",
                         values = "black",
                         guide = guide_legend(order = 4)) +
       
