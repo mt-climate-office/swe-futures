@@ -121,7 +121,8 @@ plot_snotel <-
     
     
     ggplot() +
-      ggtitle(x$station) +
+      labs(title = x$station,
+           subtitle = lubridate::stamp("March 1, 1999")(lubridate::as_date(x$latest_date))) +
       
       ## PAST CONDITIONS
       geom_ribbon(data = 
@@ -201,7 +202,8 @@ plot_snotel <-
       theme_bw() +
       theme(legend.margin = margin(),
             plot.title = element_text(face = "bold",
-                                      hjust = 0.5),
+                                      hjust = 0.0),
+            plot.subtitle = element_text(hjust = 0.0),
             legend.title = element_text(face = "bold"),
             axis.title = element_text(face = "bold")
       )
