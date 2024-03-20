@@ -32,3 +32,10 @@ ggsave("901_usdm.png",
        width = 8,
        height = 5,
        units = "in")
+
+
+## SNODAS FUTURES
+snodas_files <- get_snodas()
+
+
+
